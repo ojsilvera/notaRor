@@ -318,16 +318,18 @@ end
 Buscar todos los usuarios con un rol determinado
 @users = Role.find_by_name("%#{params[:q]}%").users
 
-Buscar por numero de dumento de manera unica
-@users = User.where('cast(ndocumento as text) ilike :q', q: "%#{params[:q].gsub(":","").to_i}%").order(id: :asc).page params[:page]
+## Buscar por numero de dumento de manera unica
 ----------------------------------------------------------------------------------------------------------------------
-estilizar boton subir archivo simple_form
-<label class="btn btn-primary">
-	Add a Avatar!
-    <span style="display:none;">
-		<%= f.file_field :avatar %>
-    </span>
-</label>
+@users = User.where('cast(ndocumento as text) ilike :q', q: "%#{params[:q].gsub(":","").to_i}%").order(id: :asc).page params[:page]
+
+## Estilizar boton subir archivo simple_form
+
+    <label class="btn btn-primary">
+        Add a Avatar!
+        <span style="display:none;">
+            <%= f.file_field :avatar %>
+        </span>
+    </label>
 
 
 
