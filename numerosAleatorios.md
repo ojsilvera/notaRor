@@ -9,6 +9,8 @@
         unica.
         no nula.
 
+# Solucion 1: no es buena practica pero hay está.
+
 ## Ejecutando la creacion por consola
 
     Teniendo en cuenta que tenemos un modelo en la base de datos de nombre
@@ -66,3 +68,25 @@
     - Enviar los parametros
 
         el metodo create solicitara los datos del strong_params que hemos preparado
+
+# solucion 2:
+
+    esta solucion hace uso del metodo merge del hash, se implementa de la siguiente manera:
+
+    - originalmente el metodo create se ve de la siguiente manera:
+
+        @poll_header = PollHeader.new(poll_header_params)
+
+    - los parametros recibidos son los mismos que nos envia la vista
+
+        params.require(:poll_header).permit(:age, :date, :gender_id, :institution_id)
+
+    - aplicando el metdo merge para el hash, el metodo create quedaria de la siguiente manera
+
+        @poll_header = PollHeader.new(poll_header_params.merge(id: SecureRandom.hex(2)))
+
+    - La anterior linea agrega el campo id al hash para desarrollar el metodo create, tengace en cuenta que
+      el valor del metodo id es temporal y solo se aplica en el momento del la accion create
+
+en conclusion la solucion dos s un metodo menos intrucivo, mas limpio y mas facil de leer, este se recomienda mas que
+el primero, pero ambos demuestran la facilidad de manejo de los request y los hash, por parte de rails.
