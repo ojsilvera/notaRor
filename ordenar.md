@@ -61,6 +61,14 @@ modelo: singular y no capitalizado(minusculas)
 
 http://rubyni.com/2017/08/07/convenciones-de-nombres-de-rails/
 
+Buscar ruta de un controlador en la consola
+----------------------------------------------------------------
+rails routes (muesta todas las rutas disponibles)
+rails routes -c "nombredelcontrolado_sincomillas" (muestra todos los controladores asociados a la palabra colocada)
+
+para sistemas basados en unix una alternativa de filtro seria:
+rails routes | grep "aqui el nomnre del controlador" (usar las comillas mas el nombre del controlador que buscamos)
+
 * script para creacion de una especialidad x consola
 ----------------------------------------------------------------
 Especialidad.create(nombre:"SISTEMAS")
